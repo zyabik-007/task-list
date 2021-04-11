@@ -15,15 +15,13 @@ class TaskController
     {
         if (!empty($_SESSION['userId']))
             UserController::$user = User::where('id', $_SESSION['userId'])->first();
-
     }
 
     public function index($page = 1)
     {
-        $page = intval((int)$page);
-        $tasks = Task::getIndex();
+        $page = $PaginatorCurrentPage = intval((int)$page);
+        $tasks = Task::getIndex($page);
         $PaginatorTotalItems = Task::count();
-        $PaginatorCurrentPage = $page;
         return Helper::view('task.index', compact('tasks', 'PaginatorTotalItems', 'PaginatorCurrentPage'));
     }
 
@@ -43,23 +41,17 @@ class TaskController
         $request = Request::capture();
         if ($request->post()) {
             $v = new Validator($request->all());
-            $v->rules(
-                [
-                    'required' => ['name', 'email', 'description'],
-                    'email' => ['email'],
-                    'integer' => ['id'],
-                    'lengthMin' => [
-                        ['name', 1]
-                    ],
-                    'lengthMax' => [
-                        ['name', 255],
-                        ['email', 255],
-                    ],
-                    'in' => [
-                        ['status', ['on', 'off']]
-                    ]
-                ]
-            );
+            $v->rules([
+                'required' => ['name', 'email', 'description'],
+                'email' => ['email'],
+                'integer' => ['id'],
+                'lengthMin' => ['name', 1],
+                'lengthMax' => [
+                    ['name', 255],
+                    ['email', 255],
+                ],
+                'in' => ['status', ['on', 'off']]
+            ]);
             if ($v->validate()) {
                 if (Task::updateOrCreate(
                     ['id' => $request->input('id')],
@@ -67,7 +59,7 @@ class TaskController
                         'name' => $request->input('name'),
                         'email' => $request->input('email'),
                         'description' => trim($request->input('description')),
-                        'status' => $request->input('status') === 'on' ? 'done' : null,
+                        'status' => $request->input('status') === 'on' ? 'done' : null
                     ]
                 )) {
                     unset($_SESSION['errors']);
