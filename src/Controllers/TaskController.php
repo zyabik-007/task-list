@@ -19,8 +19,12 @@ class TaskController
 
     public function index($page = 1)
     {
+        $request = Request::capture();
         $page = $PaginatorCurrentPage = intval((int)$page);
-        $tasks = Task::getIndex($page);
+        $orderBy['status'] = $request->input('status_sort');
+        $orderBy['name'] = $request->input('name_sort');
+        $orderBy['email'] = $request->input('email_sort');
+        $tasks = Task::getIndex($page, $orderBy);
         $PaginatorTotalItems = Task::count();
         return Helper::view('task.index', compact('tasks', 'PaginatorTotalItems', 'PaginatorCurrentPage'));
     }
@@ -39,7 +43,7 @@ class TaskController
     public function store()
     {
         $request = Request::capture();
-        if ($request->post()) {
+        if ($request->post() && !empty($request->input('id')) && $_SESSION['pex'] === 'admin') {
             $v = new Validator($request->all());
             $v->rules([
                 'required' => ['name', 'email', 'description'],

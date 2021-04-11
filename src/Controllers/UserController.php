@@ -15,12 +15,14 @@ class UserController
     {
         $request = Request::capture();
         if ($request->post()) {
-            $user = User::where('login', 'admin')->first();
+            $user = User::where('login', $request->input('login'))->first();
             if (!empty($user) && password_verify($request->input('password'), $user->password)) {
                 $_SESSION['pex'] = $user->pex;
                 $_SESSION['userId'] = $user->id;
                 return Helper::redirect(Helper::url());
             }
+            $_SESSION['errors'] = [['Error, check username and password']];
+            $_SESSION['success'] = false;
         }
         return Helper::view('login');
     }

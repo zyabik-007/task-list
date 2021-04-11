@@ -19,6 +19,16 @@ class Helper
         return (new Request())->capture()->root() . "/$url";
     }
 
+    public static function urlWithParameters($url = '', $data = [], $pathInfo = true, $get = true)
+    {
+        $request = Request::capture();
+        if ($pathInfo === false) $pathInfo = '/';
+        else $pathInfo = $request->getPathInfo();
+        if ($get === true) $get = $request->all();
+        else $get = [];
+        return (new Request())->capture()->root() . $pathInfo . "$url?" . http_build_query(array_merge($get, $data));
+    }
+
     public static function redirect($url)
     {
         return header('Location: ' . $url);
