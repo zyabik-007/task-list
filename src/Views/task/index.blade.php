@@ -6,25 +6,25 @@
         <table class="table">
             <thead>
             <tr>
-                <th class="col-4">Name
+                <th class="col-2">Name
                     <a href="{{\App\Helper::urlWithParameters('',['name_sort'=>'asc'],true,false)}}"
                        class="bi bi-sort-up"></a>
                     <a href="{{\App\Helper::urlWithParameters('',['name_sort'=>'desc'],true,false)}}"
                        class="bi bi-sort-down"></a>
                 </th>
-                <th class="col-4">Status
+                <th class="col-2">Status
                     <a href="{{\App\Helper::urlWithParameters('',['status_sort'=>'asc'],true,false)}}"
                        class="bi bi-sort-up"></a>
                     <a href="{{\App\Helper::urlWithParameters('',['status_sort'=>'desc'],true,false)}}"
                        class="bi bi-sort-down"></a>
                 </th>
-                <th class="col-4">Email
+                <th class="col-2">Email
                     <a href="{{\App\Helper::urlWithParameters('',['email_sort'=>'asc'],true,false)}}"
                        class="bi bi-sort-up"></a>
                     <a href="{{\App\Helper::urlWithParameters('',['email_sort'=>'desc'],true,false)}}"
                        class="bi bi-sort-down"></a>
                 </th>
-                <th>Description</th>
+                <th class="col-12">Description</th>
                 @if(\App\Helper::isAdmin())
                     <th></th>
                 @endif
