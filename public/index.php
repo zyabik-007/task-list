@@ -29,7 +29,7 @@ $capsule->bootEloquent();
 $request = Request::capture();
 
 require __DIR__ . '/../config/routes.php';
-//try {
+try {
     $path = explode('/', $request->path());
     if (isset($path[0]) && isset($routes[$path[0]])) {
         if (in_array($_SESSION['pex'], $routes[$path[0]]['pex'])) {
@@ -40,7 +40,7 @@ require __DIR__ . '/../config/routes.php';
             return header('Location: ' . \App\Helper::url('login'));
         }
     }
-//} catch (\Throwable  $ex) {
-//}
+} catch (\Throwable  $ex) {
+}
 return \App\Helper::view('error');
 ?>
