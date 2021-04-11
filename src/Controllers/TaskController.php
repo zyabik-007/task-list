@@ -43,7 +43,7 @@ class TaskController
     public function store()
     {
         $request = Request::capture();
-        if ($request->post() && !empty($request->input('id')) && $_SESSION['pex'] === 'admin') {
+        if ($request->post() && (!empty($request->input('id')) && $_SESSION['pex'] === 'admin') || empty($request->input('id'))) {
             $v = new Validator($request->all());
             $v->rules([
                 'required' => ['name', 'email', 'description'],
