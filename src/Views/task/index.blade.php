@@ -6,13 +6,13 @@
         <table class="table">
             <thead>
             <tr>
-                <th class="col-2">Name
+                <th class="col-3">Name
                     <a href="{{\App\Helper::urlWithParameters('',['name_sort'=>'asc'],true,false)}}"
                        class="bi bi-sort-up"></a>
                     <a href="{{\App\Helper::urlWithParameters('',['name_sort'=>'desc'],true,false)}}"
                        class="bi bi-sort-down"></a>
                 </th>
-                <th class="col-2">Status
+                <th class="col-3">Status
                     <a href="{{\App\Helper::urlWithParameters('',['status_sort'=>'asc'],true,false)}}"
                        class="bi bi-sort-up"></a>
                     <a href="{{\App\Helper::urlWithParameters('',['status_sort'=>'desc'],true,false)}}"
