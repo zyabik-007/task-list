@@ -6,9 +6,15 @@
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+    <link href="{{\App\Helper::url('css.css')}}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+<div class="github">
+    <h1>
+        <b>GitHub:</b> <a href="https://github.com/zyabik-007/task-list">https://github.com/zyabik-007/task-list</a>
+    </h1>
+</div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{\App\Helper::url('')}}">Home</a>
@@ -64,5 +70,8 @@
     {{\App\Helper::clearInfoSession()}}
     @yield('content')
 </div>
+<br>
+<br>
+<br>
 </body>
 </html>
