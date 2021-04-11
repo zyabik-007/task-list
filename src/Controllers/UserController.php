@@ -30,6 +30,8 @@ class UserController
         $request = Request::capture();
         $_SESSION['pex'] = 'guest';
         $_SESSION['userId'] = null;
+        var_dump( $_SESSION['pex']);
+        dd($request->getBasePath());
         return Helper::redirect($request->getBasePath());
     }
 }
