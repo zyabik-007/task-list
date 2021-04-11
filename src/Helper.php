@@ -14,7 +14,7 @@ class Helper
         echo $blade->run($view, $data);
     }
 
-    public static function url($url)
+    public static function url($url = '')
     {
         return (new Request())->capture()->root() . "/$url";
     }

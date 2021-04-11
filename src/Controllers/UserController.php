@@ -19,7 +19,7 @@ class UserController
             if (!empty($user) && password_verify($request->input('password'), $user->password)) {
                 $_SESSION['pex'] = $user->pex;
                 $_SESSION['userId'] = $user->id;
-                return Helper::redirect($request->getBasePath());
+                return Helper::redirect(Helper::url());
             }
         }
         return Helper::view('login');
@@ -30,8 +30,6 @@ class UserController
         $request = Request::capture();
         $_SESSION['pex'] = 'guest';
         $_SESSION['userId'] = null;
-        var_dump( $_SESSION['pex']);
-        dd($request->getBasePath());
-        return Helper::redirect($request->getBasePath());
+        return Helper::redirect(Helper::url());
     }
 }
