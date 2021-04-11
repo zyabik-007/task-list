@@ -1,8 +1,11 @@
 <?php
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
 require __DIR__ . '/../vendor/autoload.php';
 session_start();
 if (!isset($_SESSION['pex']))
     $_SESSION['pex'] = 'guest';
+
 use Illuminate\Http\Request;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -36,7 +39,6 @@ try {
         }
     }
 } catch (\Throwable  $ex) {
-    dd($ex->getMessage());
 }
-//return \App\HelperController::view('error');
+return \App\HelperController::view('error');
 ?>
