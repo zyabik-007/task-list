@@ -51,7 +51,7 @@
         </div>
     </div>
 </nav>
-<div class="w-50 m-auto">
+<div class="w-75 m-auto">
     @if (\App\Helper::getSessionValue('success'))
         <div class="alert alert-success" role="alert">
             Success
