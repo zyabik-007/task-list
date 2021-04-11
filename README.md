@@ -1,11 +1,11 @@
-# task-list
+# Task-list
 List of tasks with the ability to add tasks to anyone.
 The administrator has the right to edit tasks and set its status
 
-# install dependencies
+# Install dependencies
 composer install
 
 
-# demo
+# Demo
 
 ![Screenshot](demo.png)
