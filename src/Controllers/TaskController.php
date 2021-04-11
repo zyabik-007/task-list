@@ -50,7 +50,7 @@ class TaskController
                     ['name', 255],
                     ['email', 255],
                 ],
-                'in' => ['status', ['on', 'off']]
+                'in' => [['status', ['on', 'off']]]
             ]);
             if ($v->validate()) {
                 if (Task::updateOrCreate(
@@ -70,6 +70,6 @@ class TaskController
                 $_SESSION['success'] = false;
             }
         }
-        return Helper::redirect(!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : $request->getBasePath());
+        return Helper::redirect(!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : Helper::url());
     }
 }

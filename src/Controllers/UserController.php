@@ -27,7 +27,6 @@ class UserController
 
     public function logout()
     {
-        $request = Request::capture();
         $_SESSION['pex'] = 'guest';
         $_SESSION['userId'] = null;
         return Helper::redirect(Helper::url());

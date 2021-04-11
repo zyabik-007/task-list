@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL ^ E_WARNING);
 //ini_set('display_errors', 0);
 //ini_set('display_startup_errors', 0);
 require __DIR__ . '/../vendor/autoload.php';
@@ -35,10 +36,10 @@ try {
             $Controller = "\App\Controllers\\" . $Controller;
             return (new $Controller())->$function(isset($path[1]) ? $path[1] : null);
         } else {
-            return header('Location: ' . $request->getBasePath() . '/login');
+            return header('Location: ' . \App\Helper::url('login'));
         }
     }
 } catch (\Throwable  $ex) {
 }
-return \App\HelperController::view('error');
+return \App\Helper::view('error');
 ?>

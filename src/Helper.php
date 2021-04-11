@@ -10,7 +10,7 @@ class Helper
 {
     public static function view($view, $data = [])
     {
-        $blade = new BladeOne(__DIR__ . '/Views', __DIR__ . '/../cache', BladeOne::MODE_DEBUG); // MODE_DEBUG allows to pinpoint troubles.
+        $blade = new BladeOne(__DIR__ . '/Views', __DIR__ . '/../cache', BladeOne::MODE_DEBUG);
         echo $blade->run($view, $data);
     }
 
