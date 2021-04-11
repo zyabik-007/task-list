@@ -24,7 +24,7 @@
                     <a href="{{\App\Helper::urlWithParameters('',['email_sort'=>'desc'],true,false)}}"
                        class="bi bi-sort-down"></a>
                 </th>
-                <th class="col-12">Description</th>
+                <th class="col">Description</th>
                 @if(\App\Helper::isAdmin())
                     <th></th>
                 @endif
