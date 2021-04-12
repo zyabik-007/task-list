@@ -17,6 +17,7 @@
                        class="bi bi-sort-up"></a>
                     <a href="{{\App\Helper::urlWithParameters('',['status_sort'=>'desc'],true,false)}}"
                        class="bi bi-sort-down"></a>
+
                 </th>
                 <th class="col-2">Email
                     <a href="{{\App\Helper::urlWithParameters('',['email_sort'=>'asc'],true,false)}}"
@@ -34,7 +35,11 @@
             @foreach($tasks as $task)
                 <tr>
                     <td> {{$task->name}}</td>
-                    <td> {{$task->status}}</td>
+                    <td> {{$task->status}}
+                        @if($task->created_at!=$task->updated_at)
+                            <div>edited by admin</div>
+                        @endif
+                    </td>
                     <td> {{$task->email}}</td>
                     <td> {{$task->description}}</td>
                     @if(\App\Helper::isAdmin())
