@@ -7,7 +7,8 @@
     "illuminate/http": "^8.36",
     "vlucas/phpdotenv": "^5.3",
     "vlucas/valitron": "^1.4",
-    "innobrig/paginator": "^1.0"
+    "innobrig/paginator": "^1.0",
+    "ahmard/quick-route": "^3.4"
   },
   "autoload": {
     "psr-4": {

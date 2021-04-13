@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Task extends Model
 {
-    protected $fillable = ['name', 'email', 'description', 'status'];
+    protected $fillable = ['name', 'email', 'description', 'status','updated_at'];
+    public $timestamps = false;
 
     public static function getIndex($page = 1, $orderBy = [])
     {

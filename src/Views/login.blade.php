@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="post" class="card-body mw-10 m-auto text-center" action="./login">
+    <form method="post" class="card-body mw-10 m-auto text-center" action="{{\App\Helper::url('user/login')}}">
         <div class="input-group mb-3">
             <input type="text" name="login" class="form-control" placeholder="Login" aria-label="Login"
                    aria-describedby="basic-addon1" required>

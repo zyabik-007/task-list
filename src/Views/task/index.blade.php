@@ -36,7 +36,7 @@
                 <tr>
                     <td> {{$task->name}}</td>
                     <td> {{$task->status}}
-                        @if($task->created_at!=$task->updated_at)
+                        @if($task->created_at!==$task->updated_at && $task->updated_at!==null)
                             <div>edited by admin</div>
                         @endif
                     </td>
@@ -44,7 +44,7 @@
                     <td> {{$task->description}}</td>
                     @if(\App\Helper::isAdmin())
                         <td>
-                            <a href="{{\App\Helper::url('edit/'.$task->id)}}">
+                            <a href="{{\App\Helper::url('task/edit/'.$task->id)}}">
                                 <button type="button" class="btn btn-primary">Edit</button>
                             </a>
                         </td>

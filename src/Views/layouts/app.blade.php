@@ -25,14 +25,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  mb-2 mb-lg-0 ">
                 <li class="nav-item ">
-                    <a class="nav-link active text-primary " aria-current="page" href="{{\App\Helper::url('create')}}">Create
+                    <a class="nav-link active text-primary " aria-current="page"
+                       href="{{\App\Helper::url('task/create')}}">Create
                         task</a>
                 </li>
             </ul>
             @if(!empty(\App\Controllers\UserController::$user))
                 <ul class="navbar-nav  mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{\App\Helper::url('logout')}}">Logout</a>
+                        <a class="nav-link active" aria-current="page"
+                           href="{{\App\Helper::url('user/logout')}}">Logout</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
@@ -44,7 +46,8 @@
             @else
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{\App\Helper::url('login')}}">Login</a>
+                        <a class="nav-link active" aria-current="page"
+                           href="{{\App\Helper::url('user/login')}}">Login</a>
                     </li>
                 </ul>
             @endif
@@ -67,7 +70,6 @@
             </div>
         @endif
     @endif
-    {{\App\Helper::clearInfoSession()}}
     @yield('content')
 </div>
 <br>

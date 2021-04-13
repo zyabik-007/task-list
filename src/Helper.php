@@ -52,6 +52,6 @@ class Helper
 
     public static function hasSessionKey($key)
     {
-        return isset($_SESSION[$key]);
+        return !empty($_SESSION[$key]);
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="post" action="{{\App\Helper::url('store')}}">
+    <form method="post" action="{{\App\Helper::url('task/store')}}">
         @if(isset($task->id))
             <input type="hidden" name="id" value="{{$task->id}}">
         @endif

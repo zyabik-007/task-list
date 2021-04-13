@@ -7,7 +7,6 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Valitron\Validator;
-use function Illuminate\Support\Facades\Route;
 
 class TaskController
 {
@@ -57,15 +56,15 @@ class TaskController
                 'in' => [['status', ['on', 'off']]]
             ]);
             if ($v->validate()) {
-                if (Task::updateOrCreate(
-                    ['id' => $request->input('id')],
-                    [
-                        'name' => $request->input('name'),
-                        'email' => $request->input('email'),
-                        'description' => trim($request->input('description')),
-                        'status' => $request->input('status') === 'on' ? 'done' : null
-                    ]
-                )) {
+                $data = [
+                    'name' => $request->input('name'),
+                    'email' => $request->input('email'),
+                    'description' => trim($request->input('description')),
+                    'status' => $request->input('status') === 'on' ? 'done' : null
+                ];
+                $task = empty($request->input('id')) ? null : Task::where('id', $request->input('id'))->first();
+                if (!empty($task) && $task->description != trim($request->input('description'))) $data['updated_at'] = date('Y-m-d H:i:s');
+                if (Task::updateOrCreate(['id' => $request->input('id')], $data)) {
                     unset($_SESSION['errors']);
                     $_SESSION['success'] = true;
                 } else $_SESSION['errors'] = [['Error db']];
